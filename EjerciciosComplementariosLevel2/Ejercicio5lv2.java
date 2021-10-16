@@ -10,6 +10,7 @@ public class Ejercicio5lv2{
         List<Integer> horasTrabajadas = new ArrayList<>();
         List<Integer> valorPorHora = new ArrayList<>();
         List<Integer> totalCobrar = new ArrayList<>();
+        Integer total = 0;
         cargarHoras(horasTrabajadas);
         cargarValor(valorPorHora);
         
@@ -23,11 +24,15 @@ public class Ejercicio5lv2{
             System.out.println(valor);
         }
 
-        calcularTotal(horasTrabajadas, valorPorHora, totalCobrar);
-        System.out.println("Totales: ");
-        for(Integer total: totalCobrar){
-            System.out.println(total);
+        cargarSubTotal(horasTrabajadas, valorPorHora, totalCobrar);
+        System.out.println("Sub Totales: ");
+        for(Integer subtotal: totalCobrar){
+            System.out.println(subtotal);
+            total += subtotal;
         }
+        System.out.println("Total al cobrar: "+total);
+
+
     }
 
     public static Scanner scan = new Scanner(System.in);
@@ -45,7 +50,7 @@ public class Ejercicio5lv2{
         }
         scan.close();
     }
-    public static void calcularTotal(List<Integer> horasTrabajadas, List<Integer> valorPorHora, List<Integer> totalCobrar) {
+    public static void cargarSubTotal(List<Integer> horasTrabajadas, List<Integer> valorPorHora, List<Integer> totalCobrar) {
         for (Integer i= 0; i<horasTrabajadas.size(); i++) {
             totalCobrar.add(horasTrabajadas.get(i)*valorPorHora.get(i));
         }
